@@ -1,0 +1,76 @@
+:root {
+  --primary-color: #8750f7; /* Define your primary color */
+  --secondary-color: #2a1454; /* Define your secondary color */
+  --primary-color-light: #b085f7; /* Define a light variant of your primary color */
+  --body-color: #141321; /* Define your body text color */
+  
+}
+
+
+body {
+  background: linear-gradient(180deg, #0f0c29,  #302b63, #0f0c29);
+  /* background: #c73535; */
+  color: var(--body-color);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--secondary-color);
+}
+
+section {
+  padding: 60px 0;
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    flex-direction: column;
+  }
+}
+
+
+/* *****NavBar***** */
+
+/* Add hover effect for nav links */
+.nav-link {
+  position: relative;
+  color: #fff !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0dcaf0; /* Light blue on hover */
+}
+
+/* Underline effect for active section link */
+.nav-link.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Distance from the text */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0dcaf0; /* Light blue underline */
+  transition: width 0.8s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: width 0.5s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Full underline on hover */
+  background-color: #0dcaf0;
+}

@@ -1,0 +1,81 @@
+.skills {
+    padding: 50px 20px;
+    background-color: #1a1a2e;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .skills-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #e94560;
+    text-transform: uppercase;
+  }
+  
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #16213e;
+    border-radius: 10px;
+    padding: 20px;
+    height: 150px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .skill i {
+    font-size: 3rem;
+    color: #e94560;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .skill p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Highlight effect for only non-hovered cards */
+  .skills-container .skill {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+.skill .postman {
+  font-size: 5rem;
+  }
+
+  .skills-container .skill:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    /* background-color: #e94560; */
+    color: #fff;
+  }
+  
+  .skills-container .skill:hover i {
+    color: #fff;
+  }
+  
+  .skills-container .skill:hover p {
+    opacity: 1;
+  }
+  
+  /* Fade out non-hovered cards */
+  .skills-container .skill:not(:hover) {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  
