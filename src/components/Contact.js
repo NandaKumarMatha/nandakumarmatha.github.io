@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, TextField, Button, Typography, Stack } from '@mui/material';
+import "./contact.css";
 
 const Contact = () => {
   return (
@@ -8,7 +9,7 @@ const Contact = () => {
       Let's work together!
       </Typography>
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
-        <Box flex={1}>
+        <Box flex={1} className="contact-form">
           <Typography variant="h5" gutterBottom>
             Let's work together
           </Typography>
@@ -38,7 +39,7 @@ const Contact = () => {
             </Button>
           </form>
         </Box>
-        <Box flex={1} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+        <Box flex={1} className='my-info' display="flex" flexDirection="column" justifyContent="center" alignItems="center">
           <Typography variant="body1">
             Email: matha.nandakumar@outlook.com
           </Typography>

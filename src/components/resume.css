@@ -1,0 +1,72 @@
+.rcontainer {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .section {
+    margin-bottom: 40px;
+    flex: 1;
+  }
+  
+  .section h2 {
+    color: #d3d3d3;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .epcard-container,
+  .edcard-container {
+    display: flex; /* Use flexbox */
+    flex-direction: column;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    gap: 20px; /*Maintain spacing between cards*/
+    /* justify-content: space-between; Distribute space evenly */
+    align-content: center;
+  }
+  
+  .card {
+    background-color: #1f1b24; /* Dark background */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    text-align: left; /* Align text to the left */
+    color: #fff; /* White text */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    /* flex: 1 1 250px; Grow, shrink, and set a minimum width of 250px */
+    max-width:100%; /*Prevent cards from exceeding their container */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    background-color: #6726ac;
+  }
+  
+  .card h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #9a6cff; /* Subtle purple for the year */
+    opacity: 0.9; /* Slight transparency */
+  }
+  
+  .card h3 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #d3d3d3; /* Light gray for the detail text */
+    opacity: 0.8;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .rcontainer {
+      flex-direction: column;
+    }
+  }

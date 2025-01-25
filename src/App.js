@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme';
 import CollapsibleExample from './Navbar';
 import Home from './components/Home';
-import About from './components/About';
+import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -21,11 +21,11 @@ function App() {
         <section id="home">
           <Home />
         </section>
-        <section id="about">
-          <About />
-        </section>
         <section id="projects">
           <Projects />
+        </section>
+        <section id="resume">
+          <Resume />
         </section>
         <section id="skills">
           <Skills />

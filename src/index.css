@@ -74,3 +74,40 @@ h1 {
   width: 100%; /* Full underline on hover */
   background-color: #0dcaf0;
 }
+
+
+
+.bg-body-tertiary {
+  background: linear-gradient(180deg, #302b63,   #302b63);
+  /* border-bottom: 1px solid #230055; */
+}
+
+.bg-body-tertiary .nav-link {
+  color: #fff; /* Adjust link color to stand out */
+}
+
+.bg-body-tertiary .nav-link:hover {
+  color: #f0a500; /* Optional: Add hover effect */
+}
+
+.bg-body-tertiary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* Start off-screen */
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(93deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  opacity: 0.3;
+  transform: skewX(-60deg);
+  animation: shine 3s linear infinite; /* Adjust duration for speed */
+}
+
+@keyframes shine {
+  0% {
+    left: -150px; /* Start off-screen on the left */
+  }
+  100% {
+    left: 100%; /* Move to off-screen on the right */
+  }
+}

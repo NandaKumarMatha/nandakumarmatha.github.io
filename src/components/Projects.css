@@ -1,0 +1,47 @@
+.projects-container {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 40px 24px;
+}
+
+.projects-description {
+  margin-bottom: 32px;
+}
+
+.projects-categories {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  margin: 8px;
+  background-color: #333;
+  transition: background-color 0.7s;
+}
+
+.category-button:hover {
+  background-color: #6a5acd;
+}
+
+.category-button.active {
+  background-color: #6a5acd;
+}
+
+.project-card {
+  background-color: #333;
+  color: #fff;
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: #444;
+}
+
+.project-description {
+  color: #bbb;
+}

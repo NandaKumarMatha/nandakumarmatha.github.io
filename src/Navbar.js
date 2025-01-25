@@ -15,17 +15,18 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function CollapsibleExample() {
   return (
-    <Navbar collapseOnSelect fixed="top" bg = "dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
+    // <Navbar collapseOnSelect fixed="top" bg="primary" data-bs-theme="#" expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect fixed="top" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">
           <img src="360_F_507748773_gstrg1pxvdzpr0MbVJvwSkZW81DyyMhC-removebg-preview.png"
               width="80" height="50" className="d-inline-block align-top" alt="logo"/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ color: 'white' }} />
         <Navbar.Collapse id="responsive-navbar-nav">          
           <Nav className="ms-auto">
-            <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#projects">Projects</Nav.Link>
+            <Nav.Link href="#resume">Resume</Nav.Link>
             <Nav.Link href="#skills">Skills</Nav.Link>
             <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>

@@ -18,7 +18,7 @@ const Skills = () => {
         </div>
         <div className="skill">
 
-        <i class="devicon-django-plain-wordmark"></i>
+        <i className="devicon-django-plain-wordmark"></i>
           
         </div>
         <div className="skill">
@@ -45,7 +45,7 @@ const Skills = () => {
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
         </div>
         <div className="skill">
-        <i class="devicon-selenium-original"></i>
+        <i className="devicon-selenium-original"></i>
         </div>
          <div className="skill"> 
         
@@ -53,10 +53,10 @@ const Skills = () => {
           
         </div>
         <div className="skill">
-        <i class="devicon-qt-original colored"></i>
+        <i className="devicon-qt-original colored"></i>
         </div>
         <div className="skill">
-        <i class="devicon-oracle-original"></i>
+        <i className="devicon-oracle-original"></i>
         </div>
         <div className="skill">
         
