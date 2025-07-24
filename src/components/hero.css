@@ -12,7 +12,8 @@
     overflow: hidden;
     animation: gradientAnimation 3s ease infinite; /* Add animation */
     border-radius: 18px;
-  }
+    box-sizing: border-box;
+}
   
   @keyframes gradientAnimation {
     0% {
@@ -96,13 +97,37 @@
   
   /* Media query for small screens */
   @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 18px 8px 24px 8px;
+      min-height: 100vh;
+      border-radius: 0;
+    }
+    .hero-content {
+      max-width: 100%;
+      margin: 0 0 18px 0;
+    }
     .ss-hero-image {
       display: flex;
       justify-content: center;
+      margin-bottom: 18px;
     }
-  
+    .ss-hero-image img {
+      width: 90vw;
+      max-width: 320px;
+      border-radius: 16px;
+    }
     .hero-image {
       display: none;
+    }
+    .hero-buttons {
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .hero-title, .hero-subtitle, .hero-description {
+      text-align: center;
     }
   }
   
