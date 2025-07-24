@@ -45,3 +45,79 @@
 .project-description {
   color: #bbb;
 }
+
+.snapcraft-card {
+  background: #f0f5f6;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  margin-bottom: 16px;
+  min-height: 120px;
+}
+
+.snapcraft-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.snapcraft-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-right: 20px;
+  background: #fff;
+}
+
+.snapcraft-card-title {
+  color: #22223b !important;
+  font-weight: 400 !important;
+  font-family: "Ubuntu", Arial, sans-serif !important;
+  line-height: 1.1 !important;
+}
+
+.snapcraft-card-author {
+  color: #22223b !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  font-family: "Ubuntu", Arial, sans-serif !important;
+}
+
+.snapcraft-card-badge-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 200px;
+  margin-left: 0;
+}
+
+.snapcraft-card-badge {
+  height: 48px;
+  width: 100%;
+  max-width: 180px;
+  object-fit: contain;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .snapcraft-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+  .snapcraft-card-header {
+    margin-bottom: 0;
+  }
+  .snapcraft-card-badge-link {
+    margin-left: 24px;
+    width: 100%;
+    max-width: 200px;
+  }
+}

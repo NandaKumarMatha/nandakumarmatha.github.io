@@ -3,6 +3,7 @@
   --secondary-color: #2a1454; /* Define your secondary color */
   --primary-color-light: #b085f7; /* Define a light variant of your primary color */
   --body-color: #141321; /* Define your body text color */
+  font-family: 'FreeMono', 'monospace';
   
 }
 

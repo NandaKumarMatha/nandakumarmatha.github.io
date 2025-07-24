@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, IconButton } from '@mui/material';
-import { CloudDownload , LinkedIn, GitHub } from '@mui/icons-material';
+import { CloudDownload , LinkedIn, GitHub, WhatsApp } from '@mui/icons-material';
 import "./hero.css";
 
 const Hero = () => {
@@ -25,10 +25,13 @@ const Hero = () => {
         <Button variant="contained" color="primary" startIcon={<CloudDownload />}> 
             Get My CV 
         </Button> 
-        <IconButton className="home-iconButton" href="https://www.linkedin.com/in/nandakumar-matha" target="_blank"> 
+        <IconButton className="home-iconButton lki" href="https://www.linkedin.com/in/nandakumar-matha" target="_blank"> 
             <LinkedIn /> 
         </IconButton> 
-        <IconButton className="home-iconButton" href="https://github.com/NandaKumarMatha" target="_blank"> 
+        <IconButton className="home-iconButton wa" href="https://wa.me/919493785134" target="_blank"> 
+            <WhatsApp /> 
+        </IconButton> 
+        <IconButton className="home-iconButton gt" href="https://github.com/NandaKumarMatha" target="_blank"> 
             <GitHub /> 
         </IconButton>
         </div>

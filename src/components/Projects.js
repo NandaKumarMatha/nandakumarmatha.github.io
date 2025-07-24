@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Grid, Card, CardMedia, CardContent } from '@mui/material';
+import './Projects.css'; // Import the CSS file for styles
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -72,6 +73,7 @@ const Projects = () => {
         ))}
       </Box>
       <Grid container spacing={3}>
+        {/* Existing project cards */}
         {filteredWorks.map((work, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card 
@@ -97,6 +99,58 @@ const Projects = () => {
             </Card>
           </Grid>
         ))}
+        {/* Google Apps Desktop Snapcraft Card */}
+        <Grid item xs={12} sm={12} md={8} lg={8}>
+          <Box className="snapcraft-card">
+            <Box className="snapcraft-card-header">
+              <img
+                src="https://dashboard.snapcraft.io/site_media/appmedia/2025/05/icon_SzSk04L.png"
+                alt="Google Apps Desktop snap"
+                className="snapcraft-card-icon"
+              />
+              <Box>
+                <Typography
+                  variant="h5"
+                  className="snapcraft-card-title"
+                >
+                  Google Apps Desktop
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  className="snapcraft-card-author"
+                >
+                  by Nanda Kumar Matha (n-incognito)
+                </Typography>
+
+              </Box>
+            </Box>
+            <a
+              href="https://snapcraft.io/google-apps-desktop"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginLeft: 24,
+                justifyContent: 'center',
+                width: '100%',
+                maxWidth: 200,
+              }}
+            >
+              <img
+                alt="Get it from the Snap Store"
+                src="https://snapcraft.io/en/dark/install.svg"
+                style={{
+                  height: 48,
+                  margin: 0,
+                  width: '100%',
+                  maxWidth: 180,
+                  objectFit: 'contain',
+                }}
+              />
+            </a>
+          </Box>
+        </Grid>
       </Grid>
     </Box>
   );

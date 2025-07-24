@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     mode: 'dark',
+    fontFamily: 'FreeMono, monospace',
     background: {
       default: '#2a1454',
       paper: '#424242',
