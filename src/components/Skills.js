@@ -62,7 +62,7 @@ const Skills = () => {
             {skill.iconClass && <i className={skill.iconClass}></i>}
             {skill.svg && <div className="skill-svg">{skill.svg}</div>}
             {skill.img && <img src={skill.img} alt={skill.name} />}
-            <p>{skill.name}</p>
+            {/* <p>{skill.name}</p> */}
           </div>
         ))}
       </div>

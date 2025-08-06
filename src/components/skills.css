@@ -43,7 +43,7 @@
 
 .skill {
   background: #0b153d;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 12px;
   width: 120px;
   height: 120px;
@@ -52,14 +52,12 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  color: white;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .skill i,
 .skill-svg,
 .skill img {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
@@ -67,8 +65,8 @@
 }
 
 .skill-svg svg {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   fill: currentColor;
 }
 
