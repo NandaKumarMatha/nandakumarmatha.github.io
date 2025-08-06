@@ -22,9 +22,9 @@ const Hero = () => {
           connect billions of people.
         </p>
         <div className="hero-buttons">
-        <Button variant="contained" color="primary" startIcon={<CloudDownload />}> 
+        {/* <Button variant="contained" color="primary" startIcon={<CloudDownload />}> 
             Get My CV 
-        </Button> 
+        </Button>  */}
         <IconButton className="home-iconButton lki" href="https://www.linkedin.com/in/nandakumar-matha" target="_blank"> 
             <LinkedIn /> 
         </IconButton> 
