@@ -1,12 +1,12 @@
 .skills {
   padding: 2rem;
   text-align: center;
-  background: #0d0b24;
+  /* background: #0d0b24; */
 }
 
 .skills-title {
   color: #ff4f87;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
