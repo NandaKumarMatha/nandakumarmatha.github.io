@@ -22,7 +22,7 @@ function CollapsibleExample() {
           <img src="360_F_507748773_gstrg1pxvdzpr0MbVJvwSkZW81DyyMhC-removebg-preview.png"
               width="80" height="50" className="d-inline-block align-top" alt="logo"/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ color: 'white' }} />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ borderColor: 'white'}} className="navbar-dark"/>
         <Navbar.Collapse id="responsive-navbar-nav">          
           <Nav className="ms-auto">
             <Nav.Link href="#projects">Projects</Nav.Link>
