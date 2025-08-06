@@ -44,7 +44,7 @@ const secondRowScroll = [...secondRow, ...secondRow];
 const Skills = () => {
   return (
   <section className="skills">
-    <h2 className="skills-title">My Tech Stack</h2>
+    <h2 className="skills-title">Tech Stack</h2>
     <div className="skills-scroll-wrapper">
       <div className="skills-row row1">
         {firstRowScroll.map((skill, idx) => (
