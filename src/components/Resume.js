@@ -29,9 +29,9 @@ const Resume = () => {
         {experience.map((item, index) => (
           <div className="roadmap-milestone-horizontal" key={index}>
             <div className="roadmap-dot-horizontal" />
-            {index !== experience.length - 1 || education.length > 0 ? (
+            {/* {index !== experience.length - 1 || education.length > 0 ? (
               <div className="roadmap-line-horizontal" />
-            ) : null}
+            ) : null} */}
             <div className="roadmap-card-horizontal glass-card">
               <span className="roadmap-date">{item.year}</span>
               <span className="roadmap-role">{item.title}</span>

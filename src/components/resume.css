@@ -1,7 +1,7 @@
 /* Horizontal Roadmap Layout Styles */
 .roadmap-layout-horizontal {
-  max-width: 100vw;
-  overflow-x: auto;
+  max-width: 100%;
+  overflow: hidden;
   padding: 32px 0 32px 0;
   background: transparent;
 }
@@ -12,6 +12,13 @@
   gap: 48px;
   position: relative;
   padding: 32px 32px 0 32px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.roadmap-horizontal::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 .roadmap-milestone-horizontal {
