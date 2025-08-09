@@ -10,8 +10,8 @@ import "./resume.css";
 const Resume = () => {
   const experience = [
     { year: "Feb 2025 - Present", title: "Sr. Software Engineer", place: "Fission Labs" },
-    { year: "Jul 2012 - Aug 2024", title: "Product Analyst", place: "Rite Software Solutions & Services LLC." },
-    { year: "Nov 2019 - Jul 2012", title: "Technical Consultant", place: "Rite Software Solutions & Services LLC." },
+    { year: "Jul 2012 - Aug 2024", title: "Product Analyst", place: "Rite Software." },
+    { year: "Nov 2019 - Jul 2012", title: "Technical Consultant", place: "Rite Software." },
     { year: "Aug 2019 - Oct 2019", title: "Intern", place: "Inlight Data Analytics Pvt. Ltd." },
   ];
 
