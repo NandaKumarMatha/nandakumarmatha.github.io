@@ -7,6 +7,12 @@ const Projects = () => {
   const categories = ['All', 'AI/ML', 'Automation', 'Web Development'];
   const works = [
     { 
+      title: 'Omada Ai', 
+      category: 'AI/ML', 
+      image: 'omada.png', 
+      description: 'An AI-powered marketing platform with agentic tools to generate content and automate tasks.' 
+    },
+    { 
       title: 'Process Rite', 
       category: 'Automation', 
       image: 'pr.png', 
