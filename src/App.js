@@ -5,12 +5,12 @@ import Container from '@mui/material/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme';
 import CollapsibleExample from './Navbar';
-import Home from './components/Home';
-import Resume from './components/Resume';
-import Contact from './components/Contact';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Footer from './components/Footer';
+import Home from './components/Home/Home';
+import Resume from './components/Resume/Resume';
+import Contact from './components/Contact/Contact';
+import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (

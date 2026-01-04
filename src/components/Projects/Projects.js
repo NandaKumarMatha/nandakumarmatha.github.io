@@ -1,60 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Grid, Card, CardMedia, CardContent } from '@mui/material';
 import './Projects.css'; // Import the CSS file for styles
+import { projectsData } from '../../data/projectsData';
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', 'AI/ML', 'Automation', 'Web Development'];
-  const works = [
-    { 
-      title: 'Omada Ai', 
-      category: 'AI/ML', 
-      image: 'omada.png', 
-      description: 'An AI-powered marketing platform with agentic tools to generate content and automate tasks.' 
-    },
-    { 
-      title: 'Process Rite', 
-      category: 'Automation', 
-      image: 'pr.png', 
-      description: 'An automation solution streamlining processes effectively.' 
-    },
-    { 
-      title: 'Data Migration', 
-      category: 'Web Development', 
-      image: 'dataprc.png', 
-      description: 'A project focused on seamless data transfer and integrity.' 
-    },
-    { 
-      title: 'CloudOptiTrack', 
-      category: 'Automation', 
-      image: 'cloudOpt.png', 
-      description: 'Optimizing cloud operations with intelligent tracking.' 
-    },
-    { 
-      title: 'Documentary LLM', 
-      category: 'AI/ML', 
-      image: 'llm.png', 
-      description: 'A language model designed for document summarization.' 
-    },
-    { 
-      title: 'Rite Bot', 
-      category: 'AI/ML', 
-      image: 'bot.png', 
-      description: 'An AI-driven chatbot for seamless user interactions.' 
-    },
-     { 
-      title: 'Dermatology Image Classification', 
-      category: 'AI/ML',
-      image: 'derm_clasf.png',
-      description: 'A project focused on classifying dermatological images using deep learning techniques.'
-    },
-    { 
-      title: 'Objects & Face Recognition', 
-      category: 'AI/ML', 
-      image: 'odfr.png', 
-      description: 'An AI-based project for real-time object and face recognition.' 
-    },
-  ];
+
+
+  const works = projectsData;
 
   const filteredWorks = activeCategory === 'All' ? works : works.filter(work => work.category === activeCategory);
 
@@ -87,20 +41,20 @@ const Projects = () => {
       <Grid container spacing={3}>
         {filteredWorks.map((work, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card 
-              sx={{ 
-                bgcolor: '#333', 
-                color: '#fff', 
-                borderRadius: 2, 
-                transition: 'transform 0.3s, box-shadow 0.3s', 
-                '&:hover': { 
-                  transform: 'scale(1.05)', 
+            <Card
+              sx={{
+                bgcolor: '#333',
+                color: '#fff',
+                borderRadius: 2,
+                transition: 'transform 0.3s, box-shadow 0.3s',
+                '&:hover': {
+                  transform: 'scale(1.05)',
                   boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
                   bgcolor: '#444'
                 }
               }}
             >
-              <CardMedia component="img" height="200" image={work.image} alt={work.title} sx={{ objectFit: "cover" }}/>
+              <CardMedia component="img" height="200" image={work.image} alt={work.title} sx={{ objectFit: "cover" }} />
               <CardContent>
                 <Typography variant="h6">{work.title}</Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ color: '#bbb' }}>
@@ -111,7 +65,7 @@ const Projects = () => {
           </Grid>
         ))}
       </Grid>
-      
+
       {/* Separate Snapcraft card with top margin */}
       <Box sx={{ mt: 6 }}>
         <Grid container justifyContent="center">
