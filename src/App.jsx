@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme';
+import { useScrollEffects } from './hooks/useScrollEffects';
 import CollapsibleExample from './Navbar';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
@@ -13,24 +14,32 @@ import Skills from './components/Skills/Skills';
 import Footer from './components/Footer/Footer';
 
 function App() {
+  useScrollEffects();
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <CollapsibleExample />
-      <Container sx={{ paddingTop: '64px' }}> {/* Add top padding */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          paddingTop: '64px',
+          px: { xs: 1.25, sm: 2, md: 3 },
+        }}
+      >
         <section id="home">
           <Home />
         </section>
         <section id="projects">
           <Projects />
         </section>
-        <section id="resume">
+        <section id="resume" className="section-scroll">
           <Resume />
         </section>
-        <section id="skills">
+        <section id="skills" className="section-scroll">
           <Skills />
         </section>
-        <section id="contact">
+        <section id="contact" className="section-scroll">
           <Contact />
         </section>
       </Container>

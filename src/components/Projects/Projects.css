@@ -1,3 +1,20 @@
+/* Flex shells for scroll-scrub wrappers (GSAP animates transform here, not on tilt cards) */
+.project-card-scroll-wrap {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  transform-origin: 50% 50%;
+}
+
+.projects-snap-scroll-wrap {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  transform-origin: 50% 50%;
+}
+
 .projects-container {
   background-color: #1a1a2e;
   color: #fff;
@@ -47,45 +64,75 @@
 }
 
 .snapcraft-card {
-  background: #f0f5f6;
+  background: linear-gradient(145deg, #f5f7fa 0%, #e8ecf3 100%);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(135, 80, 247, 0.12);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
   padding: 16px;
   margin-bottom: 16px;
   min-height: 120px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  transform: perspective(900px) rotateX(2deg);
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.snapcraft-card:hover {
+  transform: perspective(900px) rotateX(0deg) translateY(-8px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18), 0 0 36px rgba(135, 80, 247, 0.2);
 }
 
 .snapcraft-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 16px;
+  min-width: 0;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.snapcraft-card-text {
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .snapcraft-card-icon {
   width: 56px;
   height: 56px;
   border-radius: 12px;
-  margin-right: 20px;
+  margin-right: 0;
   background: #fff;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .snapcraft-card-title {
   color: #22223b !important;
   font-weight: 400 !important;
   font-family: "Ubuntu", Arial, sans-serif !important;
-  line-height: 1.1 !important;
+  line-height: 1.2 !important;
+  font-size: clamp(1.05rem, 3.8vw, 1.375rem) !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .snapcraft-card-author {
   color: #22223b !important;
   font-weight: 400 !important;
-  font-size: 18px !important;
+  font-size: clamp(0.8rem, 3.2vw, 1.05rem) !important;
+  line-height: 1.35 !important;
   font-family: "Ubuntu", Arial, sans-serif !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .snapcraft-card-badge-link {
@@ -95,6 +142,10 @@
   width: 100%;
   max-width: 200px;
   margin-left: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+  align-self: center;
+  box-sizing: border-box;
 }
 
 .snapcraft-card-badge {
@@ -103,6 +154,24 @@
   max-width: 180px;
   object-fit: contain;
   margin: 0;
+  display: block;
+}
+
+@media (max-width: 599px) {
+  .snapcraft-card {
+    padding: 14px;
+  }
+
+  .snapcraft-card-header {
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+
+  .snapcraft-card-badge-link {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 600px) {
@@ -112,12 +181,27 @@
     justify-content: space-between;
     padding: 24px;
   }
+
   .snapcraft-card-header {
     margin-bottom: 0;
+    margin-right: 12px;
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+    align-items: center;
   }
+
   .snapcraft-card-badge-link {
     margin-left: 24px;
-    width: 100%;
+    width: auto;
     max-width: 200px;
+    align-self: center;
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snapcraft-card:hover {
+    transform: perspective(900px) rotateX(2deg);
   }
 }

@@ -119,7 +119,10 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  min-width: 260px;
+  min-width: 0;
+  flex: 0 0 auto;
+  width: min(260px, 85vw);
+  max-width: 100%;
   padding: 0 24px;
 }
 
@@ -258,7 +261,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 240px;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -289,6 +293,9 @@
   color: #fff;
   text-align: center;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .roadmap-place {
@@ -296,6 +303,10 @@
   color: #a5b4fc;
   opacity: 0.9;
   text-shadow: 0 0 8px rgba(165, 180, 252, 0.3);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  text-align: center;
 }
 
 /* Education cards - cyan neon */
@@ -335,13 +346,16 @@
   }
 
   .roadmap-milestone-horizontal {
-    min-width: 180px;
+    width: min(240px, 82vw);
+    max-width: 100%;
+    min-width: 0;
     padding: 0 12px;
   }
 
   .roadmap-card-horizontal {
     padding: 18px 16px;
-    min-width: 180px;
+    min-width: 0;
+    width: 100%;
   }
 
   .roadmap-date {
@@ -386,13 +400,16 @@
   }
 
   .roadmap-milestone-horizontal {
-    min-width: 200px;
+    width: min(220px, 88vw);
+    max-width: 100%;
+    min-width: 0;
     padding: 0 8px;
   }
 
   .roadmap-card-horizontal {
     padding: 16px 14px;
-    min-width: 200px;
+    min-width: 0;
+    width: 100%;
   }
 
   .roadmap-dot-horizontal {

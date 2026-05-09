@@ -1,18 +1,38 @@
 .skills {
-  /* padding: 2rem; */
   text-align: center;
-  /* background: #0d0b24; */
+  position: relative;
+  perspective: 900px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .skills-title {
-  color: #ff4f87;
+  background: linear-gradient(100deg, #ff4f87 0%, #8750f7 50%, #d4aaff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 40px rgba(135, 80, 247, 0.2);
+  animation: skillsTitleGlow 6s ease-in-out infinite;
+}
+
+@keyframes skillsTitleGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 12px rgba(255, 79, 135, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(135, 80, 247, 0.45));
+  }
 }
 
 .skills-scroll-wrapper {
   overflow: hidden;
   position: relative;
+  max-width: 100%;
 }
 
 .skills-row {
@@ -42,9 +62,10 @@
 }
 
 .skill {
-  background: #0b153d;
+  background: linear-gradient(155deg, rgba(11, 21, 61, 0.95), rgba(48, 43, 99, 0.85));
+  border: 1px solid rgba(135, 80, 247, 0.25);
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: 14px;
   width: 120px;
   height: 120px;
   display: flex;
@@ -52,6 +73,16 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.skill:hover {
+  transform: translateY(-8px) rotateX(8deg) rotateY(-6deg) scale(1.04);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45), 0 0 28px rgba(135, 80, 247, 0.28);
+  border-color: rgba(212, 170, 255, 0.45);
 }
 
 .skill i,
@@ -74,4 +105,15 @@
   max-width: 40px;
   max-height: 40px;
   object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-title {
+    animation: none;
+    filter: none;
+  }
+
+  .skill:hover {
+    transform: none;
+  }
 }
