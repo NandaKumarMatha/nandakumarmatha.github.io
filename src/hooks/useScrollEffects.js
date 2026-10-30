@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Scroll-scrubbed motion (progress tied to scroll), closer to premium scroll sites
- * than one-shot “fade in when visible”.
+ * than one-shot "fade in when visible".
  */
 export function useScrollEffects() {
   useLayoutEffect(() => {
@@ -32,13 +32,7 @@ export function useScrollEffects() {
       tl.to('.hero-content', { yPercent: -16, autoAlpha: 0.38 }, 0);
       tl.to(
         '.hero-image, .ss-hero-image',
-        {
-          y: 130,
-          scale: 0.9,
-          rotateY: -12,
-          rotateX: 5,
-          transformPerspective: 1200,
-        },
+        { y: 130, scale: 0.94, autoAlpha: 0.45 },
         0
       );
 
@@ -63,12 +57,7 @@ export function useScrollEffects() {
       tl.to('.hero-content', { yPercent: -5, autoAlpha: 0.72 }, 0);
       tl.to(
         '.hero-image, .ss-hero-image',
-        {
-          y: 32,
-          scale: 0.97,
-          rotateY: 4,
-          transformPerspective: 1000,
-        },
+        { y: 32, scale: 0.97 },
         0
       );
 
@@ -151,16 +140,12 @@ export function useScrollEffects() {
         0.12
       );
 
+      /* Card wrappers: simple y + fade — no rotateX (conflicts with CSS 3D tilt) */
       wraps.forEach((el, i) => {
         tl.fromTo(
           el,
-          {
-            y: 44 + i * 6,
-            rotateX: 3.5,
-            autoAlpha: 0.74,
-            transformPerspective: 1000,
-          },
-          { y: 0, rotateX: 0, autoAlpha: 1 },
+          { y: 40 + i * 5, autoAlpha: 0.72 },
+          { y: 0, autoAlpha: 1 },
           0.14 + i * 0.035
         );
       });
