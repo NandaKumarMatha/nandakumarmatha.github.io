@@ -6,11 +6,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import './navbar.css';
 
 const NAV_LINKS = [
-  { href: '#home',     label: 'Home' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#resume',   label: 'Resume' },
-  { href: '#skills',   label: 'Skills' },
-  { href: '#contact',  label: 'Contact' },
+  { href: '#home',         label: 'Home' },
+  { href: '#projects',     label: 'Projects' },
+  { href: '#resume',       label: 'Roadmap' },
+  { href: '#skills',       label: 'Skills' },
+  { href: '#credentials',  label: 'Credentials' },
+  { href: '#contact',      label: 'Contact' },
 ];
 
 function Navbar() {
@@ -52,7 +53,6 @@ function Navbar() {
   const handleNavClick = (href) => { setActive(href); setOpen(false); };
 
   return (
-    /* Wrapper — nav-bar and mobile drawer are siblings so overflow:hidden on bar never clips drawer */
     <div className="nav-root">
       {/* ── Fixed bar ── */}
       <header
@@ -66,7 +66,6 @@ function Navbar() {
         onMouseLeave={() => setGlowShow(false)}
         role="banner"
       >
-        {/* Cursor glow */}
         <div
           className="nav-cursor-glow"
           style={{ left: glowX, opacity: glowShow ? 1 : 0 }}
@@ -74,13 +73,11 @@ function Navbar() {
         />
 
         <div className="nav-inner">
-          {/* Brand */}
           <a href="#home" className="nav-brand" onClick={() => handleNavClick('#home')}>
             <span className="nav-brand-icon">⬡</span>
             <span className="nav-brand-text">NKM</span>
           </a>
 
-          {/* Desktop links */}
           <nav className="nav-links" aria-label="Main navigation">
             {NAV_LINKS.map(({ href, label }) => (
               <a
@@ -95,7 +92,6 @@ function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop socials */}
           <div className="nav-socials">
             <a href="https://www.linkedin.com/in/nandakumar-matha" target="_blank" rel="noopener noreferrer" className="nav-social-btn" aria-label="LinkedIn">
               <LinkedIn fontSize="small" />
@@ -105,7 +101,6 @@ function Navbar() {
             </a>
           </div>
 
-          {/* Hamburger — mobile only */}
           <button
             className={`nav-hamburger${open ? ' nav-hamburger--open' : ''}`}
             onClick={() => setOpen(o => !o)}
@@ -118,7 +113,7 @@ function Navbar() {
         </div>
       </header>
 
-      {/* ── Mobile drawer — sibling of header, NOT inside it ── */}
+      {/* ── Mobile drawer ── */}
       <div
         id="nav-mobile-drawer"
         className={`nav-drawer${open ? ' nav-drawer--open' : ''}`}
@@ -143,7 +138,6 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Backdrop overlay — tap outside to close */}
       {open && (
         <div
           className="nav-backdrop"

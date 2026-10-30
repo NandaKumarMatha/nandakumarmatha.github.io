@@ -7,6 +7,7 @@ import { useScrollEffects } from './hooks/useScrollEffects';
 import Navbar from './Navbar';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
+import Credentials from './components/Credentials/Credentials';
 import Contact from './components/Contact/Contact';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
@@ -37,6 +38,9 @@ function App() {
         </section>
         <section id="skills" className="section-scroll">
           <Skills />
+        </section>
+        <section id="credentials" className="section-scroll">
+          <Credentials />
         </section>
         <section id="contact" className="section-scroll">
           <Contact />

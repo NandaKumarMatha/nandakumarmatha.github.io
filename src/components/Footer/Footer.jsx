@@ -7,11 +7,12 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import './footer.css';
 
 const NAV_LINKS = [
-  { href: '#home',     label: 'Home' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#resume',   label: 'Resume' },
-  { href: '#skills',   label: 'Skills' },
-  { href: '#contact',  label: 'Contact' },
+  { href: '#home',         label: 'Home' },
+  { href: '#projects',     label: 'Projects' },
+  { href: '#resume',       label: 'Roadmap' },
+  { href: '#skills',       label: 'Skills' },
+  { href: '#credentials',  label: 'Credentials' },
+  { href: '#contact',      label: 'Contact' },
 ];
 
 const SOCIALS = [
@@ -39,7 +40,7 @@ const Footer = () => {
           </a>
           <p className="footer-tagline">
             Sr. Associate @ Synechron<br />
-            AI/ML · Automation · Web Dev
+            AI/ML · Automation · Cloud & Web Dev
           </p>
           <div className="footer-socials">
             {SOCIALS.map(({ Icon, href, label, color }) => (
