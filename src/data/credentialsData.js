@@ -60,3 +60,4 @@ export const credentialsData = [
     description: "Recognized for outstanding backend development and testing for DaaX products, clear proactive communication, and consistently exceeding delivery expectations."
   }
 ];
+
