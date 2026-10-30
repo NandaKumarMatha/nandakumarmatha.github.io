@@ -1,7 +1,5 @@
 import React from 'react';
 import './skills.css';
-
-
 import { skillsData } from '../../data/skillsData';
 
 const skills = skillsData;
@@ -11,7 +9,6 @@ const secondRow = skills.filter((_, i) => i % 2 !== 0);
 
 const firstRowScroll = [...firstRow, ...firstRow];
 const secondRowScroll = [...secondRow, ...secondRow];
-
 
 const Skills = () => {
   return (
@@ -23,8 +20,8 @@ const Skills = () => {
             <div key={`row1-${idx}`} className="skill">
               {skill.iconClass && <i className={skill.iconClass}></i>}
               {skill.svg && <div className="skill-svg">{skill.svg}</div>}
-              {skill.img && <img src={skill.img} alt={skill.name} />}
-              <p>{skill.name}</p>
+              {skill.img && <img src={skill.img} alt={skill.name || "skill icon"} />}
+              {skill.name && <p className="skill-name">{skill.name}</p>}
             </div>
           ))}
         </div>
@@ -33,13 +30,14 @@ const Skills = () => {
             <div key={`row2-${idx}`} className="skill">
               {skill.iconClass && <i className={skill.iconClass}></i>}
               {skill.svg && <div className="skill-svg">{skill.svg}</div>}
-              {skill.img && <img src={skill.img} alt={skill.name} />}
-              {/* <p>{skill.name}</p> */}
+              {skill.img && <img src={skill.img} alt={skill.name || "skill icon"} />}
+              {skill.name && <p className="skill-name">{skill.name}</p>}
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
 export default Skills;
