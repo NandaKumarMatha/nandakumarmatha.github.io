@@ -1,110 +1,153 @@
-import React from 'react';
-import { Box, Typography, Stack, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import LinkedIn from '@mui/icons-material/LinkedIn';
+import GitHub from '@mui/icons-material/GitHub';
+import WhatsApp from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import './contact.css';
 
+const SOCIALS = [
+  {
+    Icon: LinkedIn,
+    label: 'LinkedIn',
+    sub: 'nandakumar-matha',
+    href: 'https://www.linkedin.com/in/nandakumar-matha',
+    color: '#0077b5',
+    glow: 'rgba(0,119,181,0.4)',
+  },
+  {
+    Icon: GitHub,
+    label: 'GitHub',
+    sub: 'NandaKumarMatha',
+    href: 'https://github.com/NandaKumarMatha',
+    color: '#e0e0e0',
+    glow: 'rgba(200,200,200,0.25)',
+  },
+  {
+    Icon: WhatsApp,
+    label: 'WhatsApp',
+    sub: '+91 9493785134',
+    href: 'https://wa.me/919493785134',
+    color: '#25d366',
+    glow: 'rgba(37,211,102,0.35)',
+  },
+];
+
 const Contact = () => {
+  const [copied, setCopied] = useState('');
+
+  const copyToClipboard = (text, key) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(key);
+      setTimeout(() => setCopied(''), 2000);
+    });
+  };
+
   return (
-    <Box
-      className="contact-section"
-      sx={{
-        color: '#fff',
-        py: 8,
-        px: 2,
-        minHeight: 400,
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      <div className="contact-ambient contact-ambient-a" aria-hidden />
-      <div className="contact-ambient contact-ambient-b" aria-hidden />
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
-        sx={{
-          fontWeight: 700,
-          letterSpacing: 1,
-          position: 'relative',
-          zIndex: 1,
-          fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
-          px: 1,
-          wordBreak: 'break-word',
-        }}
-      >
-        Contact
-      </Typography>
-      <Typography
-        variant="h6"
-        align="center"
-        sx={{
-          mb: 4,
-          color: '#bbb',
-          position: 'relative',
-          zIndex: 1,
-          px: { xs: 1.5, sm: 2 },
-          wordBreak: 'break-word',
-        }}
-      >
-        Feel free to reach out for collaborations or just a friendly hello!
-      </Typography>
-      <Stack justifyContent="center" alignItems="center" sx={{ position: 'relative', zIndex: 1 }}>
-        <Paper
-          elevation={8}
-          className="contact-card-3d"
-          sx={{
-            bgcolor: 'rgba(35, 35, 74, 0.92)',
-            p: { xs: 2.5, sm: 4, md: 5 },
-            borderRadius: 4,
-            minWidth: 0,
-            width: '100%',
-            maxWidth: 'min(400px, 100%)',
-            border: '1px solid rgba(135, 80, 247, 0.35)',
-            backdropFilter: 'blur(10px)',
-            boxSizing: 'border-box',
-          }}
-        >
-          <Stack spacing={{ xs: 3, sm: 4 }}>
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="flex-start"
-              sx={{ minWidth: 0 }}
+    <section className="contact-section" id="contact-content">
+      {/* Ambient orbs */}
+      <div className="contact-orb contact-orb-a" aria-hidden />
+      <div className="contact-orb contact-orb-b" aria-hidden />
+      <div className="contact-orb contact-orb-c" aria-hidden />
+
+      <div className="contact-inner">
+        {/* ── Header ── */}
+        <div className="contact-header">
+          <span className="contact-tag">GET IN TOUCH</span>
+          <h2 className="contact-title">Let's Build Something <span className="contact-title-accent">Together</span></h2>
+          <p className="contact-subtitle">
+            Open to collaborations, freelance projects, and exciting opportunities.
+            Drop a message — I respond within 24 hours.
+          </p>
+        </div>
+
+        {/* ── Two-column body ── */}
+        <div className="contact-body">
+
+          {/* Left — contact info */}
+          <div className="contact-info-col">
+            <h3 className="contact-col-title">Contact Info</h3>
+
+            {/* Email */}
+            <button
+              className="contact-info-row"
+              onClick={() => copyToClipboard('matha.nandakumar@outlook.com', 'email')}
+              title="Click to copy"
             >
-              <EmailIcon sx={{ color: '#6a5acd', fontSize: 32, flexShrink: 0, mt: 0.25 }} />
-              <Box sx={{ minWidth: 0, wordBreak: 'break-all', overflowWrap: 'anywhere' }}>
+              <span className="contact-info-icon-wrap">
+                <EmailIcon className="contact-info-icon" />
+              </span>
+              <span className="contact-info-text">
+                <span className="contact-info-label">Email</span>
+                <span className="contact-info-value">matha.nandakumar@outlook.com</span>
+              </span>
+              <span className="contact-copy-hint">{copied === 'email' ? '✓ Copied!' : 'Copy'}</span>
+            </button>
+
+            {/* Phone */}
+            <button
+              className="contact-info-row"
+              onClick={() => copyToClipboard('+91 9493785134', 'phone')}
+              title="Click to copy"
+            >
+              <span className="contact-info-icon-wrap">
+                <PhoneIcon className="contact-info-icon" />
+              </span>
+              <span className="contact-info-text">
+                <span className="contact-info-label">Phone</span>
+                <span className="contact-info-value">+91 9493785134</span>
+              </span>
+              <span className="contact-copy-hint">{copied === 'phone' ? '✓ Copied!' : 'Copy'}</span>
+            </button>
+
+            {/* Location */}
+            <div className="contact-info-row contact-info-row--static">
+              <span className="contact-info-icon-wrap">
+                <LocationOnIcon className="contact-info-icon" />
+              </span>
+              <span className="contact-info-text">
+                <span className="contact-info-label">Location</span>
+                <span className="contact-info-value">Visakhapatnam, Andhra Pradesh, India</span>
+              </span>
+            </div>
+
+            {/* Availability badge */}
+            <div className="contact-availability">
+              <span className="contact-avail-dot" />
+              <span>Available for new opportunities</span>
+            </div>
+          </div>
+
+          {/* Right — socials */}
+          <div className="contact-social-col">
+            <h3 className="contact-col-title">Find Me On</h3>
+            <div className="contact-social-list">
+              {SOCIALS.map(({ Icon, label, sub, href, color, glow }) => (
                 <a
-                  className="contact-email-link"
-                  href="mailto:matha.nandakumar@outlook.com"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-social-card"
+                  style={{ '--card-color': color, '--card-glow': glow }}
                 >
-                  matha.nandakumar@outlook.com
+                  <span className="contact-social-icon-wrap">
+                    <Icon style={{ color }} />
+                  </span>
+                  <span className="contact-social-text">
+                    <span className="contact-social-label">{label}</span>
+                    <span className="contact-social-sub">{sub}</span>
+                  </span>
+                  <OpenInNewIcon className="contact-social-ext" fontSize="small" />
                 </a>
-              </Box>
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems="center" sx={{ minWidth: 0 }}>
-              <PhoneIcon sx={{ color: '#6a5acd', fontSize: 32, flexShrink: 0 }} />
-              <Typography
-                variant="body1"
-                sx={{ color: '#fff', fontSize: 18, wordBreak: 'break-word', minWidth: 0 }}
-              >
-                +91-9493785134
-              </Typography>
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems="flex-start" sx={{ minWidth: 0 }}>
-              <LocationOnIcon sx={{ color: '#6a5acd', fontSize: 32, flexShrink: 0, mt: 0.25 }} />
-              <Typography
-                variant="body1"
-                sx={{ color: '#fff', fontSize: 18, wordBreak: 'break-word', minWidth: 0 }}
-              >
-                Muralinagar, Visakhapatnam, Andhra Pradesh, India
-              </Typography>
-            </Stack>
-          </Stack>
-        </Paper>
-      </Stack>
-    </Box>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
