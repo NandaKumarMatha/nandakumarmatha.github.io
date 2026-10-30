@@ -1,4 +1,12 @@
-/* Horizontal Roadmap Layout Styles - Neon Glow Design */
+/* ═══════════════════════════════════════════════════════════════════════
+   Horizontal Roadmap — Hanging Name Boards with Realistic Wind Swing
+   Each milestone features:
+   • Milestone Dot (Anchor Point)
+   • Suspension Threads with Metallic Eyelets
+   • Hanging Name Board swinging in 3D perspective from the pivot point
+═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Outer wrapper ── */
 .roadmap-layout-horizontal {
   max-width: 100%;
   overflow: hidden;
@@ -7,6 +15,7 @@
   position: relative;
 }
 
+/* ── Section title ── */
 .roadmap-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -28,143 +37,140 @@
 }
 
 @keyframes icon-glow {
-
-  0%,
-  100% {
-    filter: drop-shadow(0 0 12px rgba(252, 92, 125, 0.8));
-  }
-
-  50% {
-    filter: drop-shadow(0 0 20px rgba(106, 130, 251, 0.9));
-  }
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(252, 92, 125, 0.8)); }
+  50%       { filter: drop-shadow(0 0 20px rgba(106, 130, 251, 0.9)); }
 }
 
+/* ── Horizontal scroll strip ── */
 .roadmap-horizontal {
   display: flex;
-  align-items: flex-end;
-  gap: 24px;
+  align-items: flex-start;
+  gap: 20px;
   position: relative;
-  padding: 80px 32px 10px 32px;
-  /* Increased top padding to accommodate absolute dates */
+  padding: 16px 40px 50px 40px;
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  perspective: 1200px;
 }
+.roadmap-horizontal::-webkit-scrollbar { display: none; }
 
-.roadmap-horizontal::-webkit-scrollbar {
-  display: none;
-}
-
-/* Neon connecting line - spans between first and last milestone */
-/* Neon connecting line - width controlled by JS */
+/* ── Neon connecting line (positioned by JS) ── */
 .roadmap-line-horizontal {
   position: absolute;
   height: 3px;
-  background: linear-gradient(90deg,
-      #ff006e 0%,
-      #8338ec 25%,
-      #3a86ff 50%,
-      #06ffa5 75%,
-      #ffbe0b 100%);
-  box-shadow: 0 0 10px rgba(255, 0, 110, 0.6),
+  background: linear-gradient(
+    90deg,
+    #ff006e 0%,
+    #8338ec 25%,
+    #3a86ff 50%,
+    #06ffa5 75%,
+    #ffbe0b 100%
+  );
+  box-shadow:
+    0 0 10px rgba(255, 0, 110,  0.6),
     0 0 20px rgba(131, 56, 236, 0.4),
     0 0 30px rgba(58, 134, 255, 0.4);
-  z-index: 0;
+  z-index: 1;
   animation: neon-pulse 2s ease-in-out infinite;
-  transform-origin: left;
-  /* Top position will be set via JS/CSS relative to container */
+  transform: translateY(-50%);
+  transform-origin: left center;
+  pointer-events: none;
 }
 
-/* Date above dot */
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow:
+      0 0 10px rgba(255, 0, 110,  0.6),
+      0 0 20px rgba(131, 56, 236, 0.4),
+      0 0 30px rgba(58, 134, 255, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow:
+      0 0 15px rgba(255, 0, 110,  0.8),
+      0 0 30px rgba(131, 56, 236, 0.6),
+      0 0 45px rgba(58, 134, 255, 0.6);
+  }
+}
+
+/* ── Single milestone column ── */
+.roadmap-milestone-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 0 0 210px;
+  width: 210px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  overflow: visible;
+  perspective: 900px;
+}
+
+/* ── Date label ── */
 .roadmap-milestone-date {
-  position: absolute;
-  top: -65px;
-  /* Increased height to avoid overlap with line */
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #ff006e;
   text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
   white-space: nowrap;
   text-align: center;
   width: 100%;
-  padding-bottom: 15px;
-  /* Visual spacing */
+  height: 34px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
-
 .roadmap-education-horizontal .roadmap-milestone-date {
   color: #06ffa5;
   text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
 }
 
-@keyframes neon-pulse {
-
-  0%,
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 10px rgba(255, 0, 110, 0.6),
-      0 0 20px rgba(131, 56, 236, 0.4),
-      0 0 30px rgba(58, 134, 255, 0.4);
-  }
-
-  50% {
-    opacity: 0.8;
-    box-shadow: 0 0 15px rgba(255, 0, 110, 0.8),
-      0 0 30px rgba(131, 56, 236, 0.6),
-      0 0 45px rgba(58, 134, 255, 0.6);
-  }
-}
-
-.roadmap-milestone-horizontal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-width: 0;
-  flex: 0 0 auto;
-  width: min(260px, 85vw);
-  max-width: 100%;
-  padding: 0 24px;
-}
-
-/* Neon dot with glow */
+/* ── Neon Anchor Dot ── */
 .roadmap-dot-horizontal {
   width: 36px;
   height: 36px;
   background: #1a1a2e;
   border-radius: 50%;
   border: 3px solid #ff006e;
-  box-shadow: 0 0 15px rgba(255, 0, 110, 0.8),
+  box-shadow:
+    0 0 15px rgba(255, 0, 110, 0.8),
     0 0 30px rgba(255, 0, 110, 0.4),
     inset 0 0 15px rgba(255, 0, 110, 0.3);
   z-index: 2;
-  margin-bottom: 16px;
+  margin-bottom: 0px; /* threads start immediately under dot */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
   animation: dot-neon-pulse 2.5s ease-in-out infinite;
 }
 
 @keyframes dot-neon-pulse {
-
-  0%,
-  100% {
+  0%, 100% {
     border-color: #ff006e;
-    box-shadow: 0 0 15px rgba(255, 0, 110, 0.8),
+    box-shadow:
+      0 0 15px rgba(255, 0, 110, 0.8),
       0 0 30px rgba(255, 0, 110, 0.4),
       inset 0 0 15px rgba(255, 0, 110, 0.3);
   }
-
   33% {
     border-color: #8338ec;
-    box-shadow: 0 0 15px rgba(131, 56, 236, 0.8),
+    box-shadow:
+      0 0 15px rgba(131, 56, 236, 0.8),
       0 0 30px rgba(131, 56, 236, 0.4),
       inset 0 0 15px rgba(131, 56, 236, 0.3);
   }
-
   66% {
     border-color: #3a86ff;
-    box-shadow: 0 0 15px rgba(58, 134, 255, 0.8),
+    box-shadow:
+      0 0 15px rgba(58, 134, 255, 0.8),
       0 0 30px rgba(58, 134, 255, 0.4),
       inset 0 0 15px rgba(58, 134, 255, 0.3);
   }
@@ -182,250 +188,400 @@
 }
 
 @keyframes inner-neon-pulse {
-
-  0%,
-  100% {
-    background: #ff006e;
-    box-shadow: 0 0 10px rgba(255, 0, 110, 1);
-  }
-
-  33% {
-    background: #8338ec;
-    box-shadow: 0 0 10px rgba(131, 56, 236, 1);
-  }
-
-  66% {
-    background: #3a86ff;
-    box-shadow: 0 0 10px rgba(58, 134, 255, 1);
-  }
+  0%, 100% { background: #ff006e; box-shadow: 0 0 10px rgba(255, 0, 110, 1); }
+  33%       { background: #8338ec; box-shadow: 0 0 10px rgba(131, 56, 236, 1); }
+  66%       { background: #3a86ff; box-shadow: 0 0 10px rgba(58, 134, 255, 1); }
 }
 
-/* Education dot - cyan/green neon */
+/* ── Education dot override ── */
 .roadmap-dot-edu-horizontal {
-  border-color: #06ffa5;
-  box-shadow: 0 0 15px rgba(6, 255, 165, 0.8),
+  border-color: #06ffa5 !important;
+  box-shadow:
+    0 0 15px rgba(6, 255, 165, 0.8),
     0 0 30px rgba(6, 255, 165, 0.4),
-    inset 0 0 15px rgba(6, 255, 165, 0.3);
-  animation: dot-edu-neon-pulse 2.5s ease-in-out infinite;
+    inset 0 0 15px rgba(6, 255, 165, 0.3) !important;
+  animation: dot-edu-neon-pulse 2.5s ease-in-out infinite !important;
 }
 
 @keyframes dot-edu-neon-pulse {
-
-  0%,
-  100% {
+  0%, 100% {
     border-color: #06ffa5;
-    box-shadow: 0 0 15px rgba(6, 255, 165, 0.8),
+    box-shadow:
+      0 0 15px rgba(6, 255, 165, 0.8),
       0 0 30px rgba(6, 255, 165, 0.4),
       inset 0 0 15px rgba(6, 255, 165, 0.3);
   }
-
   50% {
     border-color: #00f5ff;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.9),
+    box-shadow:
+      0 0 20px rgba(0, 245, 255, 0.9),
       0 0 40px rgba(0, 245, 255, 0.5),
       inset 0 0 20px rgba(0, 245, 255, 0.4);
   }
 }
 
 .roadmap-dot-edu-horizontal::before {
-  background: #06ffa5;
-  box-shadow: 0 0 10px rgba(6, 255, 165, 1);
-  animation: inner-edu-neon-pulse 2s ease-in-out infinite;
+  background: #06ffa5 !important;
+  box-shadow: 0 0 10px rgba(6, 255, 165, 1) !important;
+  animation: inner-edu-neon-pulse 2s ease-in-out infinite !important;
 }
 
 @keyframes inner-edu-neon-pulse {
+  0%, 100% { background: #06ffa5; box-shadow: 0 0 10px rgba(6, 255, 165, 1); }
+  50%       { background: #00f5ff; box-shadow: 0 0 10px rgba(0, 245, 255, 1); }
+}
 
-  0%,
-  100% {
-    background: #06ffa5;
-    box-shadow: 0 0 10px rgba(6, 255, 165, 1);
+/* ══════════════════════════════════════════════════════════════
+   Hanging Rig & Realistic Wind Pendulum Physics
+   Pivot is at top center (50% 0), right beneath the anchor dot!
+══════════════════════════════════════════════════════════════ */
+.roadmap-hanging-rig {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  /* Top center pivot where thread meets dot */
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+  
+  /* Gentle ambient wind sway when idle */
+  animation: ambientWindSway 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transition: filter 0.3s ease;
+}
+
+/* ── Realistic wind gust swing on hover ── */
+.roadmap-hanging-rig:hover {
+  /* Fast wind oscillation with realistic physics damping */
+  animation: windHoverSwing 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  filter: drop-shadow(0 15px 25px rgba(255, 0, 110, 0.35));
+}
+
+.roadmap-education-horizontal .roadmap-hanging-rig:hover {
+  filter: drop-shadow(0 15px 25px rgba(6, 255, 165, 0.35));
+}
+
+/* ── Ambient Wind Sway (Breeze) ── */
+@keyframes ambientWindSway {
+  0%, 100% {
+    transform: perspective(900px) rotateX(0deg) rotateZ(0deg);
   }
-
+  25% {
+    transform: perspective(900px) rotateX(4.5deg) rotateZ(0.6deg) translateZ(3px);
+  }
   50% {
-    background: #00f5ff;
-    box-shadow: 0 0 10px rgba(0, 245, 255, 1);
+    transform: perspective(900px) rotateX(0deg) rotateZ(-0.2deg);
+  }
+  75% {
+    transform: perspective(900px) rotateX(-4deg) rotateZ(-0.6deg) translateZ(-3px);
   }
 }
 
-/* Neon glow cards */
-.roadmap-card-horizontal {
-  background: rgba(10, 10, 30, 0.9);
-  border-radius: 16px;
-  border: 2px solid #ff006e;
-  box-shadow: 0 0 20px rgba(255, 0, 110, 0.4),
-    0 8px 32px rgba(0, 0, 0, 0.6),
-    inset 0 0 20px rgba(255, 0, 110, 0.05);
-  padding: 24px 28px;
-  margin-top: 12px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-  max-width: 100%;
-  align-items: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* ── Realistic Wind Hover Swing (Dynamic Front & Back Pendulum) ── */
+@keyframes windHoverSwing {
+  0% {
+    transform: perspective(900px) rotateX(0deg) rotateZ(0deg);
+  }
+  14% {
+    transform: perspective(900px) rotateX(-22deg) rotateZ(-1.8deg) translateZ(-8px);
+  }
+  30% {
+    transform: perspective(900px) rotateX(17deg) rotateZ(1.4deg) translateZ(10px);
+  }
+  46% {
+    transform: perspective(900px) rotateX(-11deg) rotateZ(-0.9deg) translateZ(-4px);
+  }
+  62% {
+    transform: perspective(900px) rotateX(7deg) rotateZ(0.6deg) translateZ(3px);
+  }
+  78% {
+    transform: perspective(900px) rotateX(-3.5deg) rotateZ(-0.3deg);
+  }
+  90% {
+    transform: perspective(900px) rotateX(1.8deg) rotateZ(0.1deg);
+  }
+  100% {
+    transform: perspective(900px) rotateX(0deg) rotateZ(0deg);
+  }
+}
+
+/* ── Dual Suspension Threads ── */
+.roadmap-hanging-threads {
+  width: 100%;
+  height: 28px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.roadmap-threads-svg {
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
 
-/* Animated glow on hover */
-.roadmap-card-horizontal:hover {
-  transform: translateY(-12px) scale(1.05);
-  border-color: #8338ec;
-  box-shadow: 0 0 30px rgba(131, 56, 236, 0.8),
-    0 0 50px rgba(131, 56, 236, 0.4),
-    0 12px 48px rgba(0, 0, 0, 0.8),
-    inset 0 0 30px rgba(131, 56, 236, 0.1);
+.roadmap-thread-line {
+  stroke: rgba(255, 0, 110, 0.7);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(255, 0, 110, 0.9));
+  transition: stroke 0.3s ease, filter 0.3s ease;
 }
 
-.roadmap-date {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ff006e;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+.roadmap-hanging-rig:hover .roadmap-thread-line {
+  stroke: #ff006e;
+  stroke-width: 2.2;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 110, 1)) drop-shadow(0 0 16px rgba(131, 56, 236, 0.8));
 }
 
+.roadmap-thread-pivot {
+  fill: #fff;
+  stroke: #ff006e;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 110, 1));
+}
+
+.roadmap-thread-ring {
+  fill: #1a1a2e;
+  stroke: #ff006e;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 110, 0.8));
+  transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+.roadmap-hanging-rig:hover .roadmap-thread-ring {
+  fill: #ff006e;
+  stroke: #fff;
+}
+
+/* Education thread colors */
+.roadmap-education-horizontal .roadmap-thread-line {
+  stroke: rgba(6, 255, 165, 0.75);
+  filter: drop-shadow(0 0 4px rgba(6, 255, 165, 0.9));
+}
+
+.roadmap-education-horizontal .roadmap-hanging-rig:hover .roadmap-thread-line {
+  stroke: #06ffa5;
+  filter: drop-shadow(0 0 8px rgba(6, 255, 165, 1)) drop-shadow(0 0 16px rgba(0, 245, 255, 0.8));
+}
+
+.roadmap-education-horizontal .roadmap-thread-pivot,
+.roadmap-education-horizontal .roadmap-thread-ring {
+  stroke: #06ffa5;
+  filter: drop-shadow(0 0 6px rgba(6, 255, 165, 1));
+}
+
+.roadmap-education-horizontal .roadmap-hanging-rig:hover .roadmap-thread-ring {
+  fill: #06ffa5;
+  stroke: #fff;
+}
+
+/* ── Hanging Name Board Card ── */
+.roadmap-card-horizontal {
+  background: linear-gradient(
+    170deg,
+    rgba(18, 14, 45, 0.95) 0%,
+    rgba(10, 8, 28, 0.98) 100%
+  );
+  border-radius: 14px;
+  border: 2px solid #ff006e;
+  box-shadow:
+    0 0 16px rgba(255, 0, 110, 0.35),
+    0 10px 28px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 15px rgba(255, 0, 110, 0.08);
+  padding: 22px 14px 18px 14px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 125px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: visible;
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Hanging Board Mounting Studs / Pins on Card */
+.roadmap-board-pin-l,
+.roadmap-board-pin-r {
+  position: absolute;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff006e;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 8px rgba(255, 0, 110, 0.9);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.roadmap-board-pin-l { left: 24px; }
+.roadmap-board-pin-r { right: 24px; }
+
+.roadmap-education-horizontal .roadmap-board-pin-l,
+.roadmap-education-horizontal .roadmap-board-pin-r {
+  background: #06ffa5;
+  box-shadow: 0 0 8px rgba(6, 255, 165, 0.9);
+}
+
+/* Card hover glow & specular lighting */
+.roadmap-hanging-rig:hover .roadmap-card-horizontal {
+  border-color: #d4aaff;
+  box-shadow:
+    0 0 32px rgba(131, 56, 236, 0.85),
+    0 0 54px rgba(255, 0, 110, 0.45),
+    0 16px 44px rgba(0, 0, 0, 0.8),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  background: linear-gradient(
+    170deg,
+    rgba(28, 20, 68, 0.98) 0%,
+    rgba(14, 10, 38, 0.98) 100%
+  );
+}
+
+.roadmap-education-horizontal .roadmap-hanging-rig:hover .roadmap-card-horizontal {
+  border-color: #00f5ff;
+  box-shadow:
+    0 0 32px rgba(6, 255, 165, 0.85),
+    0 0 54px rgba(0, 245, 255, 0.45),
+    0 16px 44px rgba(0, 0, 0, 0.8),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+/* ── Card text ── */
 .roadmap-role {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
   overflow-wrap: anywhere;
   word-break: break-word;
   max-width: 100%;
+  line-height: 1.3;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.roadmap-hanging-rig:hover .roadmap-role {
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.65), 0 0 28px rgba(212, 170, 255, 0.5);
 }
 
 .roadmap-place {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: #a5b4fc;
-  opacity: 0.9;
-  text-shadow: 0 0 8px rgba(165, 180, 252, 0.3);
+  text-shadow: 0 0 8px rgba(165, 180, 252, 0.25);
   overflow-wrap: anywhere;
   word-break: break-word;
   max-width: 100%;
   text-align: center;
+  opacity: 0.92;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-/* Education cards - cyan neon */
+.roadmap-hanging-rig:hover .roadmap-place {
+  color: #d4aaff;
+  opacity: 1;
+}
+
+/* Education card overrides */
 .roadmap-education-horizontal .roadmap-card-horizontal {
   border-color: #06ffa5;
-  box-shadow: 0 0 20px rgba(6, 255, 165, 0.4),
-    0 8px 32px rgba(0, 0, 0, 0.6),
-    inset 0 0 20px rgba(6, 255, 165, 0.05);
+  box-shadow:
+    0 0 16px rgba(6, 255, 165, 0.35),
+    0 10px 28px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 15px rgba(6, 255, 165, 0.08);
 }
 
-.roadmap-education-horizontal .roadmap-card-horizontal:hover {
-  border-color: #00f5ff;
-  box-shadow: 0 0 30px rgba(0, 245, 255, 0.8),
-    0 0 50px rgba(0, 245, 255, 0.4),
-    0 12px 48px rgba(0, 0, 0, 0.8),
-    inset 0 0 30px rgba(0, 245, 255, 0.1);
-}
-
-.roadmap-education-horizontal .roadmap-date {
-  color: #06ffa5;
-  text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
-}
-
+/* ═══════════════════════════════════
+   Responsive Breakpoints
+═══════════════════════════════════ */
 @media (max-width: 900px) {
   .roadmap-horizontal {
-    gap: 16px;
-    padding: 70px 16px 10px 16px;
+    gap: 14px;
+    padding: 12px 24px 36px 24px;
   }
-
-  .roadmap-milestone-horizontal:first-child::before {
-    bottom: 172px;
-  }
-
-  .roadmap-milestone-date {
-    font-size: 0.8rem;
-    top: -42px;
-  }
-
   .roadmap-milestone-horizontal {
-    width: min(240px, 82vw);
-    max-width: 100%;
-    min-width: 0;
-    padding: 0 12px;
+    flex: 0 0 180px;
+    width: 180px;
+    padding: 0 8px;
   }
-
+  .roadmap-milestone-date {
+    font-size: 0.72rem;
+    height: 30px;
+  }
+  .roadmap-hanging-threads {
+    height: 24px;
+  }
   .roadmap-card-horizontal {
-    padding: 18px 16px;
-    min-width: 0;
-    width: 100%;
+    padding: 18px 10px 14px 10px;
+    min-height: 115px;
   }
-
-  .roadmap-date {
-    font-size: 0.9rem;
-  }
-
-  .roadmap-role {
-    font-size: 1.05rem;
-  }
-
-  .roadmap-place {
-    font-size: 0.85rem;
-  }
+  .roadmap-board-pin-l { left: 18px; }
+  .roadmap-board-pin-r { right: 18px; }
+  .roadmap-role  { font-size: 1rem; }
+  .roadmap-place { font-size: 0.8rem; }
 }
 
 @media (max-width: 600px) {
-  .roadmap-layout-horizontal {
-    padding: 32px 0;
-  }
-
+  .roadmap-layout-horizontal { padding: 28px 0; }
   .roadmap-title {
-    font-size: 1.8rem;
-    margin-bottom: 24px;
+    font-size: 1.75rem;
+    margin-bottom: 20px;
   }
-
-  .roadmap-icon {
-    font-size: 1.8rem !important;
-  }
-
+  .roadmap-icon { font-size: 1.75rem !important; }
   .roadmap-horizontal {
-    gap: 12px;
-    padding: 60px 8px 10px 8px;
+    gap: 10px;
+    padding: 10px 12px 30px 12px;
   }
-
-  .roadmap-milestone-horizontal:first-child::before {
-    bottom: 152px;
-  }
-
-  .roadmap-milestone-date {
-    font-size: 0.75rem;
-    top: -38px;
-  }
-
   .roadmap-milestone-horizontal {
-    width: min(220px, 88vw);
-    max-width: 100%;
-    min-width: 0;
-    padding: 0 8px;
+    flex: 0 0 155px;
+    width: 155px;
+    padding: 0 6px;
   }
-
-  .roadmap-card-horizontal {
-    padding: 16px 14px;
-    min-width: 0;
-    width: 100%;
+  .roadmap-milestone-date {
+    font-size: 0.65rem;
+    height: 28px;
+    padding-bottom: 6px;
   }
-
   .roadmap-dot-horizontal {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
-
-  .roadmap-date {
-    font-size: 0.85rem;
+  .roadmap-hanging-threads {
+    height: 22px;
   }
-
-  .roadmap-role {
-    font-size: 1rem;
+  .roadmap-card-horizontal {
+    padding: 14px 8px 12px 8px;
+    min-height: 105px;
+    border-radius: 12px;
   }
+  .roadmap-board-pin-l { left: 14px; width: 6px; height: 6px; }
+  .roadmap-board-pin-r { right: 14px; width: 6px; height: 6px; }
+  .roadmap-role  { font-size: 0.92rem; }
+  .roadmap-place { font-size: 0.7rem; }
+}
 
-  .roadmap-place {
-    font-size: 0.75rem;
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-hanging-rig {
+    animation: none !important;
+  }
+  .roadmap-hanging-rig:hover {
+    animation: none !important;
   }
 }
