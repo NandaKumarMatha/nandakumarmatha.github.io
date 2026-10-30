@@ -2,10 +2,9 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme';
 import { useScrollEffects } from './hooks/useScrollEffects';
-import CollapsibleExample from './Navbar';
+import Navbar from './Navbar';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
 import Contact from './components/Contact/Contact';
@@ -19,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <CollapsibleExample />
+      <Navbar />
       <Container
         maxWidth="lg"
         sx={{
@@ -43,7 +42,7 @@ function App() {
           <Contact />
         </section>
       </Container>
-      <Footer /> {/* Add the Footer component */}
+      <Footer />
     </ThemeProvider>
   );
 }

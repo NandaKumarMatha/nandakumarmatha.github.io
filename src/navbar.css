@@ -1,0 +1,346 @@
+/* ════════════════════════════════════════
+   Navbar — Glassmorphism + Neon
+   Structure:  .nav-root
+                 ├─ header.nav-bar      (fixed, 64px, overflow:hidden safe)
+                 ├─ div.nav-drawer      (fixed, top:64px, z-index:999)
+                 └─ div.nav-backdrop    (fixed fullscreen overlay)
+════════════════════════════════════════ */
+
+/* Root wrapper — just a positioning anchor, no visual styles */
+.nav-root {
+  position: relative;
+  z-index: 1000;
+}
+
+/* ── Fixed bar ── */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  background: rgba(15, 12, 41, 0.6);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border-bottom: 1px solid rgba(135, 80, 247, 0.15);
+  /* NO overflow:hidden — would clip the cursor glow, use clip-path instead */
+  transition: background 0.35s ease, box-shadow 0.35s ease, height 0.25s ease;
+}
+
+.nav-bar--scrolled {
+  background: rgba(15, 12, 41, 0.88);
+  box-shadow:
+    0 8px 36px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(135, 80, 247, 0.22);
+  height: 58px;
+}
+
+/* Cursor-chasing glow — clipped by bar's own boundary via pointer-events only */
+.nav-cursor-glow {
+  position: absolute;
+  top: -10px;
+  width: 280px;
+  height: 80px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 10%, rgba(135, 80, 247, 0.3) 0%, transparent 68%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  will-change: left, opacity;
+}
+
+/* ── Inner row ── */
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+/* ── Brand ── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 36px;
+}
+
+.nav-brand-icon {
+  font-size: 1.6rem;
+  color: #8750f7;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(135, 80, 247, 0.8));
+  animation: navBrandPulse 4s ease-in-out infinite;
+}
+
+@keyframes navBrandPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(135, 80, 247, 0.7)); }
+  50%       { filter: drop-shadow(0 0 18px rgba(212, 170, 255, 0.95)); }
+}
+
+.nav-brand-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(105deg, #b085f7 0%, #8750f7 50%, #d4aaff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Desktop nav links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(220, 210, 255, 0.75);
+  text-decoration: none;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color 0.22s ease, background 0.22s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+  background: rgba(135, 80, 247, 0.12);
+}
+
+.nav-link--active {
+  color: #d4aaff;
+}
+
+/* Animated underline */
+.nav-link-underline {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #8750f7, #d4aaff);
+  box-shadow: 0 0 8px rgba(135, 80, 247, 0.8);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link--active .nav-link-underline,
+.nav-link:hover .nav-link-underline {
+  width: calc(100% - 16px);
+}
+
+/* ── Social icon buttons (shared desktop + drawer) ── */
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: rgba(220, 210, 255, 0.75);
+  background: rgba(135, 80, 247, 0.1);
+  border: 1px solid rgba(135, 80, 247, 0.25);
+  text-decoration: none;
+  transition: color 0.22s ease, background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.nav-social-btn:hover {
+  color: #fff;
+  background: rgba(135, 80, 247, 0.28);
+  border-color: rgba(212, 170, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(135, 80, 247, 0.38);
+}
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none; /* shown only on mobile via media query */
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(135, 80, 247, 0.12);
+  border: 1px solid rgba(135, 80, 247, 0.3);
+  color: #d4aaff;
+  cursor: pointer;
+  margin-left: 12px;
+  flex-shrink: 0;
+  transition: background 0.22s ease, transform 0.2s ease;
+  /* Ensure it's always tappable */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:hover {
+  background: rgba(135, 80, 247, 0.24);
+}
+
+.nav-hamburger--open {
+  background: rgba(135, 80, 247, 0.28);
+  border-color: rgba(212, 170, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+/* ══════════════════════════════════════════
+   Mobile drawer — sibling of header,
+   z-index just below bar so it slides under
+══════════════════════════════════════════ */
+.nav-drawer {
+  position: fixed;
+  top: 64px;           /* sits immediately below the 64px bar */
+  left: 0;
+  right: 0;
+  z-index: 999;        /* below bar (1000), above page content */
+  background: rgba(10, 8, 28, 0.97);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid rgba(135, 80, 247, 0.22);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+
+  /* Hidden by default — max-height animation */
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition:
+    max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.38s;
+
+  /* Flex column layout */
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-drawer--open {
+  max-height: 520px;
+  visibility: visible;
+  overflow: auto;
+  transition:
+    max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+/* Drawer inner nav */
+.nav-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 16px 12px;
+}
+
+.nav-drawer-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(220, 210, 255, 0.78);
+  text-decoration: none;
+  border-radius: 10px;
+  border-left: 3px solid transparent;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-left-color 0.2s ease,
+    padding-left 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-drawer-link:hover,
+.nav-drawer-link:active {
+  color: #fff;
+  background: rgba(135, 80, 247, 0.14);
+  border-left-color: rgba(135, 80, 247, 0.65);
+  padding-left: 24px;
+}
+
+.nav-drawer-link--active {
+  color: #d4aaff;
+  background: rgba(135, 80, 247, 0.1);
+  border-left-color: #8750f7;
+}
+
+/* Drawer social row */
+.nav-drawer-socials {
+  display: flex;
+  gap: 12px;
+  padding: 12px 34px 22px;
+}
+
+/* Tap backdrop — closes drawer when tapping outside */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 998;  /* below drawer (999) and bar (1000) */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ═══════════════════════════════════
+   Responsive breakpoints
+═══════════════════════════════════ */
+
+/* Mobile — hide desktop links & socials, show hamburger */
+@media (max-width: 768px) {
+  .nav-links  { display: none !important; }
+  .nav-socials { display: none !important; }
+  .nav-hamburger { display: inline-flex; }
+  .nav-brand { margin-right: auto; }
+}
+
+/* Tablet and up — drawer never renders (it's already hidden in DOM on desktop too) */
+@media (min-width: 769px) {
+  .nav-drawer   { display: none !important; }
+  .nav-backdrop { display: none !important; }
+}
+
+/* Compact bar adjustment for scrolled state on mobile */
+@media (max-width: 768px) {
+  .nav-bar--scrolled {
+    height: 56px;
+  }
+  .nav-drawer {
+    top: 64px; /* keep consistent — will animate from there */
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .nav-inner { padding: 0 14px; }
+  .nav-brand-text { font-size: 1.05rem; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-brand-icon { animation: none; }
+  .nav-cursor-glow { transition: none; }
+  .nav-drawer { transition: none; }
+  .nav-hamburger { transition: none; }
+}
