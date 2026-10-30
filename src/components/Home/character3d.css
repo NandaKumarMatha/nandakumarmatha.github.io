@@ -1,0 +1,369 @@
+/* =========================================================
+   3D Character Stage & Holographic Viewport Styling
+   ========================================================= */
+
+.char3d-viewport {
+  position: relative;
+  width: min(340px, 92vw);
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  margin: 0 auto;
+  user-select: none;
+}
+
+/* 3D Particle Starfield Canvas */
+.char3d-canvas {
+  position: absolute;
+  inset: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 30px;
+}
+
+/* Cybernetic Gyroscopic Rings */
+.char3d-gyro-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1.5px dashed rgba(135, 80, 247, 0.35);
+  box-shadow: 0 0 20px rgba(135, 80, 247, 0.2);
+  z-index: 1;
+}
+
+.char3d-gyro-ring-1 {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(255, 0, 110, 0.35);
+  transform: rotateX(72deg) rotateZ(0deg);
+  animation: gyroSpin1 16s linear infinite;
+}
+
+.char3d-gyro-ring-2 {
+  width: 340px;
+  height: 340px;
+  border-color: rgba(6, 255, 165, 0.3);
+  transform: rotateY(70deg) rotateZ(0deg);
+  animation: gyroSpin2 22s linear infinite reverse;
+}
+
+.char3d-gyro-ring-3 {
+  width: 410px;
+  height: 410px;
+  border: 1px dotted rgba(58, 134, 255, 0.3);
+  transform: rotateX(45deg) rotateY(45deg);
+  animation: gyroSpin3 28s linear infinite;
+}
+
+@keyframes gyroSpin1 {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+
+@keyframes gyroSpin2 {
+  from { transform: rotateY(70deg) rotateZ(0deg); }
+  to { transform: rotateY(70deg) rotateZ(360deg); }
+}
+
+@keyframes gyroSpin3 {
+  from { transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg); }
+  to { transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg); }
+}
+
+/* Central 3D Stage Card */
+.char3d-stage {
+  position: relative;
+  width: 290px;
+  height: 390px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(22, 17, 50, 0.88), rgba(12, 10, 30, 0.95));
+  border: 2px solid rgba(135, 80, 247, 0.45);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(135, 80, 247, 0.35),
+    inset 0 0 25px rgba(135, 80, 247, 0.15);
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 2;
+  cursor: grab;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.char3d-stage:hover {
+  border-color: rgba(212, 170, 255, 0.7);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(135, 80, 247, 0.55),
+    0 0 100px rgba(6, 255, 165, 0.2),
+    inset 0 0 30px rgba(135, 80, 247, 0.25);
+}
+
+/* Card Body with Portrait */
+.char3d-card-body {
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  background: #110f24;
+}
+
+.char3d-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transform: translateZ(10px) scale(1.02);
+  transition: transform 0.5s ease;
+}
+
+.char3d-stage:hover .char3d-avatar-img {
+  transform: translateZ(18px) scale(1.05);
+}
+
+/* Holographic Scanline Overlay */
+.char3d-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.25) 51%
+  );
+  background-size: 100% 4px;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+}
+
+/* Specular Glare / Dynamic Lighting Overlay */
+.char3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: color-dodge;
+  transition: opacity 0.25s ease;
+}
+
+/* Cybernetic Corner HUD Brackets */
+.char3d-hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #06ffa5;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 12;
+  transform: translateZ(55px);
+  filter: drop-shadow(0 0 6px #06ffa5);
+}
+
+.hud-tl {
+  top: -4px;
+  left: -4px;
+  border-width: 3px 0 0 3px;
+  border-top-left-radius: 8px;
+}
+
+.hud-tr {
+  top: -4px;
+  right: -4px;
+  border-width: 3px 3px 0 0;
+  border-top-right-radius: 8px;
+}
+
+.hud-bl {
+  bottom: -4px;
+  left: -4px;
+  border-width: 0 0 3px 3px;
+  border-bottom-left-radius: 8px;
+}
+
+.hud-br {
+  bottom: -4px;
+  right: -4px;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 8px;
+}
+
+/* Floating 3D Holographic Badges with Extreme Stereoscopic Depth */
+.char3d-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(135, 80, 247, 0.35);
+  pointer-events: none;
+  z-index: 15;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.char3d-badge-top {
+  top: 18px;
+  right: -36px;
+  background: rgba(30, 20, 65, 0.88);
+  border: 1.5px solid rgba(135, 80, 247, 0.7);
+  transform: translateZ(75px);
+  animation: badgeFloatTop 3.5s ease-in-out infinite;
+}
+
+.char3d-badge-bottom {
+  bottom: 24px;
+  left: -32px;
+  background: rgba(15, 35, 45, 0.88);
+  border: 1.5px solid rgba(6, 255, 165, 0.65);
+  transform: translateZ(70px);
+  animation: badgeFloatBottom 4s ease-in-out infinite;
+}
+
+@keyframes badgeFloatTop {
+  0%, 100% {
+    transform: translateZ(75px) translateY(0);
+  }
+  50% {
+    transform: translateZ(85px) translateY(-6px);
+  }
+}
+
+@keyframes badgeFloatBottom {
+  0%, 100% {
+    transform: translateZ(70px) translateY(0);
+  }
+  50% {
+    transform: translateZ(80px) translateY(6px);
+  }
+}
+
+.badge-glow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff006e;
+  box-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+  animation: pulseDot 2s infinite;
+}
+
+.badge-icon {
+  font-size: 0.95rem;
+}
+
+/* Status Pill */
+.char3d-status-pill {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(65px);
+  background: rgba(18, 14, 40, 0.92);
+  border: 1px solid rgba(6, 255, 165, 0.5);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #06ffa5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), 0 0 15px rgba(6, 255, 165, 0.25);
+  z-index: 16;
+  white-space: nowrap;
+}
+
+.status-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #06ffa5;
+  box-shadow: 0 0 8px #06ffa5;
+  animation: pulseDot 1.6s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .char3d-viewport {
+    width: min(300px, 92vw);
+    height: 400px;
+  }
+
+  .char3d-stage {
+    width: 260px;
+    height: 350px;
+  }
+
+  .char3d-badge-top {
+    right: -14px;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .char3d-badge-bottom {
+    left: -14px;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .char3d-gyro-ring-1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .char3d-gyro-ring-2 {
+    width: 290px;
+    height: 290px;
+  }
+
+  .char3d-gyro-ring-3 {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .char3d-viewport {
+    width: 270px;
+    height: 360px;
+  }
+
+  .char3d-stage {
+    width: 230px;
+    height: 320px;
+  }
+
+  .char3d-badge-top {
+    right: -8px;
+    top: 8px;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .char3d-badge-bottom {
+    left: -8px;
+    bottom: 12px;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+}
+
